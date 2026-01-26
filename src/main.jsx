@@ -16,8 +16,7 @@ const queryClient = new QueryClient({
       queryFn: async ({ queryKey: [pathname, params], signal }) => {
         try {
           const response = await Api.get(pathname, params, { signal });
-          const result = await response.text();
-          return result;
+          return await response.json();
         } catch (e) {
           console.error(e);
           return null;

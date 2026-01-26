@@ -1,7 +1,7 @@
 import qs from 'query-string';
 
 const Api = {
-  baseUrl: 'https://api.tvmaze.com',
+  baseUrl: 'http://134.209.226.244:3000',
   defaultHeaders: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
