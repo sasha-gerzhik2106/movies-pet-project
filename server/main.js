@@ -42,7 +42,7 @@ fastify.get('/movies/:movieId', (req, res) => {
 });
 
 fastify
-  .listen({ port: 3456, host: '0.0.0.0' })
+  .listen({ port: 3000, host: '134.209.226.244' })
   .then(() => {
     fastify.log.info('Server started');
   })
