@@ -8,6 +8,8 @@ const fastify = Fastify({
 });
 
 const defaultPageSize = 10;
+const host = process.env.HOST || '0.0.0.0';
+const port = process.env.PORT || 3000;
 
 fastify.get('/genres', (_, res) => res.send(allGenres));
 
@@ -42,7 +44,7 @@ fastify.get('/movies/:movieId', (req, res) => {
 });
 
 fastify
-  .listen({ port: 3000, host: '134.209.226.244' })
+  .listen({ port, host })
   .then(() => {
     fastify.log.info('Server started');
   })

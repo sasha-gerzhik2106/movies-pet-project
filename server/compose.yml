@@ -1,0 +1,10 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      HOST: '0.0.0.0'
+      PORT: '3456'
+    ports:
+      - '3456:3456'
