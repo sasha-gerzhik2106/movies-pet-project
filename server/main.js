@@ -1,5 +1,6 @@
 import fs from 'fs';
 import Fastify from 'fastify';
+import cors from '@fastify/cors';
 
 const moviesInfo = JSON.parse(fs.readFileSync('./db.json', 'utf-8'));
 const { genres: allGenres, movies: allMovies } = moviesInfo;
@@ -10,6 +11,10 @@ const fastify = Fastify({
 const defaultPageSize = 10;
 const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 3000;
+
+fastify.register(cors, {
+  origin: '*',
+});
 
 fastify.get('/genres', (_, res) => res.send(allGenres));
 
