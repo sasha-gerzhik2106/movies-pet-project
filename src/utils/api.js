@@ -1,14 +1,13 @@
 import qs from 'query-string';
 
 const Api = {
-  baseUrl: 'http://134.209.226.244:3000',
+  baseUrl: 'http://134.209.226.244:3456',
   defaultHeaders: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
   },
   getDefaultOptions(options = {}) {
     return {
-      mode: 'no-cors',
       ...options,
       headers: {
         ...this.defaultHeaders,
