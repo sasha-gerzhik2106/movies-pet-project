@@ -6,6 +6,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+
 
 import Loader from '../Loader/Loader.jsx';
 import { apiUrls } from '../../../constants/api.js';
@@ -24,16 +26,20 @@ if (isLoading){
   return (
     <Box>
       <Typography variant="h2">Movies list</Typography>
-      {data.results.map((movie)=>{
-          return (
-    <Card sx={{ maxWidth: 345 }} key = {movie.id}>
+
+      <Grid container spacing={3}>
+      
+      {data.results.map((movie)=>(
+        
+           <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
+    <Card sx={{ height: '100%' }}>
       <CardMedia
         sx={{ height: 150 }}
         image={movie.posterUrl}
         title={movie.title}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5" >
         Title:{movie.title}
         </Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -51,9 +57,9 @@ if (isLoading){
         <Button size="small">Learn More</Button>
       </CardActions>
     </Card>
-  );
- 
-      })}
+  </Grid>
+      ))}
+      </Grid>
     </Box>
   );
 };
