@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
-import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
+import { privateRoute } from '../../layouts/PrivateRoute';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -13,4 +13,6 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+const PrivateMovieDetails = privateRoute(MovieDetails);
+
+export default PrivateMovieDetails;
