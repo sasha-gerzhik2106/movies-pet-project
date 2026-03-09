@@ -15,6 +15,7 @@ export const privateRoute = (Component) => (props) => {
   ) : (
     <Navigate
       to={`/login?redirect_to=${encodeURIComponent(window.location.pathname + window.location.search)}`}
+      replace
     />
   );
 };
