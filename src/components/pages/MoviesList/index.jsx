@@ -41,7 +41,7 @@ const MoviesList = () => {
                   Year:{movie.year}
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  Run time:{movie.runtime}
+                  Run time: {Math.floor(movie.runtime / 60)}ч {movie.runtime % 60}м
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                   Genres:{movie.genres.join(', ')}

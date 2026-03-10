@@ -1,6 +1,6 @@
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
 import { useIsLoggedIn } from '../../store/slices/user.js';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -58,7 +58,21 @@ const MainLayout = ({ children }) => {
     <Box>
       <AppBar position="fixed">
         <Toolbar>
-          <Typography variant="h5" flexGrow={1}>
+           <Typography 
+            variant="h5" 
+            flexGrow={1}
+            component={Link}
+            to="/"
+            sx={{ 
+              textDecoration: 'none',
+              color: 'inherit',
+              cursor: 'pointer',
+              transition: 'opacity 0.3s',
+              '&:hover': {
+                opacity: 0.8
+              }
+            }}
+          >
             Movies List
           </Typography>
           <LoginButton />
