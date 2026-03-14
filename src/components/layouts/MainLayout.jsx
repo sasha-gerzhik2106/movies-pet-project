@@ -1,15 +1,13 @@
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
-import { useIsLoggedIn } from '../../store/slices/user.js';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router';
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const LoginButton = () => {
-  const isLoggedIn = useIsLoggedIn();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const { loginWithPopup, logout, isAuthenticated  } = useAuth0();
-  
+  const { loginWithPopup, logout, isAuthenticated } = useAuth0();
+
   const onLogin = async () => {
     if (isLoading) return;
     try {
@@ -27,27 +25,23 @@ const LoginButton = () => {
       setIsLoading(false);
     }
   };
-  
+
   const onLogout = () => {
     setIsLoading(true);
-    logout({ 
-      logoutParams: { 
-        returnTo: window.location.origin 
-      } 
-    });
+    logout();
   };
-  
+
   const handleClick = isAuthenticated ? onLogout : onLogin;
-  const buttonText = isAuthenticated 
-    ? (isLoading ? 'Выход...' : 'Logout')
-    : (isLoading ? 'Вход...' : 'Login');
+  const buttonText = isAuthenticated
+    ? isLoading
+      ? 'Выход...'
+      : 'Logout'
+    : isLoading
+      ? 'Вход...'
+      : 'Login';
 
   return (
-    <Button 
-      color="inherit" 
-      onClick={handleClick} 
-      disabled={isLoading}
-    >
+    <Button color="inherit" onClick={handleClick} disabled={isLoading}>
       {buttonText}
     </Button>
   );
@@ -58,19 +52,19 @@ const MainLayout = ({ children }) => {
     <Box>
       <AppBar position="fixed">
         <Toolbar>
-           <Typography 
-            variant="h5" 
+          <Typography
+            variant="h5"
             flexGrow={1}
             component={Link}
             to="/"
-            sx={{ 
+            sx={{
               textDecoration: 'none',
               color: 'inherit',
               cursor: 'pointer',
               transition: 'opacity 0.3s',
               '&:hover': {
-                opacity: 0.8
-              }
+                opacity: 0.8,
+              },
             }}
           >
             Movies List

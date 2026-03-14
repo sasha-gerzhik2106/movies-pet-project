@@ -1,17 +1,13 @@
 import { useParams } from 'react-router';
 import { privateRoute } from '../../layouts/PrivateRoute';
 import { apiUrls } from '../../../constants/api.js';
-import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Box, Typography, Grid, Chip, Rating } from '@mui/material';
-import Api from '../../../utils/api.js';
 const MovieDetails = () => {
   const { movieId } = useParams();
 
   const { isLoading, data: movie } = useQuery({
-    queryKey: ['movie', movieId],
-    queryFn: () =>
-      Api.get(`${apiUrls.moviesList}/${movieId}`).then((res) => res.json()),
+    queryKey: [apiUrls.movieDetails(movieId)],
   });
 
   if (isLoading) {
